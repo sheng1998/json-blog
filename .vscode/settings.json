@@ -1,0 +1,6 @@
+{
+  "prettier.tabWidth": 2,
+  "editor.tabSize": 2,
+  "prettier.endOfLine": "lf",
+  "editor.insertSpaces": true,
+}
