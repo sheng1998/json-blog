@@ -1,5 +1,68 @@
+@font-face {
+  font-family: "qingsongshouxie";
+  src: url("../font/清松手写繁.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  // height: 100%;
+  background-color: #f8f8fa;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-vertical-center, .flex-items-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-horizontal-center, .flex-justify.center {
+  display: flex;
+  justify-content: center;
+}
+
+:root {
+  --navbar-height: 48px;
+  --footer-height: 48px;
+  --gap-size: 24px;
 }

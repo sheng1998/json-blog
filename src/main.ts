@@ -3,8 +3,8 @@ import App from './App.vue';
 import router from './router';
 
 import '$style/normalize.css';
-import '$style/tailwind.css';
 import '$style/global.scss';
+import '$style/color.scss';
 
 const app = createApp(App).use(router);
 

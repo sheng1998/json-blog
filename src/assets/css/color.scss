@@ -1,0 +1,71 @@
+@mixin color-group($mainColor: #409eff, $nextColor: #79bbff, $minorColor: #a0cfff, $lastColor: #ecf5ff) {
+  color: #fff;
+  background-color: $mainColor;
+  border-color: $mainColor;
+  &:hover {
+    color: #fff;
+    background-color: $nextColor;
+    border-color: $nextColor;
+  }
+  &.is-plain {
+    color: $mainColor;
+    background-color: $lastColor;
+    border-color: $minorColor;
+    &:hover, &.is-active {
+      color: #fff;
+      background-color: $mainColor;
+      border-color: $mainColor;
+    }
+  }
+  &.is-transparent {
+    background-color: transparent;
+  }
+}
+
+.color-group-1 {
+  @include color-group();
+}
+
+.color-group-2 {
+  @include color-group(#67c23a, #95d475, #b3e19d, #f0f9eb);
+}
+
+.color-group-3 {
+  @include color-group(#909399, #b1b3b8, #c8c9cc, #f4f4f5);
+}
+
+.color-group-4 {
+  @include color-group(#e6a23c, #eebe77, #f3d19e, #fdf6ec);
+}
+
+.color-group-5 {
+  @include color-group(#f56c6c, #f89898, #fab6b6, #fef0f0);
+}
+
+.color-group-6 {
+  @include color-group(#6190e8, #96b6f1, #6190e8, #e3edff);
+}
+
+.color-group-7 {
+  @include color-group(#13ce66, #7eecaf, #13ce66, #e6fff1);
+}
+
+.color-group-8 {
+  @include color-group(#ffc82c, #ffe18f, #ffc82c, #fffbef);
+}
+
+.color-group-9 {
+  @include color-group(#ff4949, #ff9090, #ff4949, #ffe0e0);
+}
+
+.color-group-10 {
+  @include color-group(#6022ff, #a481fd, #6022ff, #ede6ff);
+}
+
+.color-group-11 {
+  @include color-group(#ff7322, #ffa570, #ff7322, #fff3ec);
+}
+
+.color-group-12 {
+  @include color-group(#ff2277, #f85795, #faaac8, #fdebf2);
+}

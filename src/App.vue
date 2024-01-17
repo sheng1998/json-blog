@@ -1,12 +1,16 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-
-const msg = ref('Hello World!');
+import NavBar from '@/layout/NavBar.vue';
 </script>
 
 <template>
-  <div>{{ msg }}</div>
+  <NavBar />
+  <main class="main">
+    <router-view></router-view>
+  </main>
 </template>
 
 <style lang="scss" scoped>
+.main {
+  margin-top: var(--navbar-height);
+}
 </style>

@@ -6,6 +6,8 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
 /* eslint-enable */
 
 module.exports = {
+  publicPath: '',
+  assetsDir: 'assets',
   devServer: {
     open: true,
     port: 2024,
@@ -21,7 +23,11 @@ module.exports = {
     ],
   },
   chainWebpack: (config) => {
-    config.resolve.alias.store.set('$style', path.resolve(__dirname, 'src/assets/css/'));
+    config
+      .resolve
+      .alias
+      .store
+      .set('$style', path.resolve(__dirname, 'src/assets/css/'));
     config.plugin('define').tap((definitions) => {
       Object.assign(definitions[0], {
         // __VUE_OPTIONS_API__: true,
