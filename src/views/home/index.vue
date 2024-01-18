@@ -1,21 +1,26 @@
 <script lang="ts" setup>
-import BackgroundImage from '@/components/BackgroundImage.vue';
 import EntranceComponent from '@/views/entrance/index.vue';
 import CommonFooter from '@/layout/CommonFooter.vue';
+import BackgroundImage from './BackgroundImage.vue';
 </script>
 
 <template>
-  <div class="home flex-center">
-    <BackgroundImage />
-    <EntranceComponent />
+  <BackgroundImage />
+  <div class="home">
+    <div class="entrance flex-center">
+      <EntranceComponent />
+    </div>
+    <CommonFooter />
   </div>
-  <CommonFooter />
 </template>
 
 <style lang="scss" scoped>
 .home {
+  position: relative;
   width: 100%;
-  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
-  padding: 24px;
+  .entrance {
+    min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+    padding: var(--gap-size);
+  }
 }
 </style>

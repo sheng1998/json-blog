@@ -17,7 +17,7 @@
   height: 100%;
   pointer-events: none;
   background-image: linear-gradient(to right, #66abec,#77b1f0, #88bdf1, #9bcaf4, #b4d5f4);
-  z-index: -1;
+  z-index: 0;
   [class^=bg-image] {
     position: absolute;
     border-radius: 20px;
