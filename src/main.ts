@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
+import '@/assets/font/iconfont.css';
 import '$style/normalize.css';
 import '$style/global.scss';
 import '$style/color.scss';
