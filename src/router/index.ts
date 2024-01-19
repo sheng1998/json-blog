@@ -11,6 +11,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/knowledge',
     name: 'knowledge',
     component: () => import(/* webpackChunkName: "knowledge" */ '@/views/knowledge/index.vue'),
+    redirect: '/knowledge/list',
+    children: [
+      {
+        path: '/knowledge/list',
+        name: 'knowledge-list',
+        component: () => import('@/views/knowledge/KnowledgeList.vue'),
+      },
+      {
+        path: '/knowledge/details/:id',
+        name: 'knowledge-details',
+        component: () => import('@/views/knowledge/KnowledgeDetails.vue'),
+      },
+    ],
   },
 ];
 

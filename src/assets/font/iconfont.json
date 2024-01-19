@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11224997",
+      "name": "阅读",
+      "font_class": "read",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "5117629",
+      "name": "评论-色块icon",
+      "font_class": "comment",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "5651349",
+      "name": "爱心",
+      "font_class": "like",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
       "icon_id": "23569307",
       "name": "展开",
       "font_class": "collapse",

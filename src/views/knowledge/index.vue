@@ -1,18 +1,6 @@
 <script lang="ts" setup>
 import { onUnmounted, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { KnowledgeTag } from '@/types/index';
-import FilterWrapper from './FilterWrapper.vue';
 import DirectoryTree from './DirectoryTree.vue';
-
-const route = useRoute();
-const router = useRouter();
-
-const currentTag = ref(Number(route.query.tag));
-const onTagChange = (tag: KnowledgeTag['id']) => {
-  console.log(tag, currentTag.value);
-  router.replace({ query: { ...route.query, tag } });
-};
 
 const leftVisible = ref(false);
 
@@ -39,64 +27,38 @@ toggleShowLeft();
 </script>
 
 <template>
-  <div class="knowledge-wrapper flex">
-    <Transition name="enter-in-left">
-      <el-scrollbar class="left" v-if="leftVisible">
-        <div class="inner">
-          <DirectoryTree />
-        </div>
-      </el-scrollbar>
-    </Transition>
+  <div class="knowledge-wrapper flex-center">
+    <el-scrollbar class="left" v-if="leftVisible">
+      <DirectoryTree />
+    </el-scrollbar>
     <div class="main">
-      <FilterWrapper v-model="currentTag" class="tag-filter-wrapper" @change="onTagChange" />
-      <el-card class="knowledge-list">
-        <div style="height: 200px; background-color: cadetblue;"></div>
-        <div style="height: 200px; margin-top: 20px; background-color: pink;"></div>
-        <div style="height: 200px; margin-top: 20px; background-color: orange;"></div>
-        <div style="height: 200px; margin-top: 20px;background-color: honeydew;"></div>
-      </el-card>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-$transition: all .3s ease;
+$transition: all 3s ease;
 
 .knowledge-wrapper {
   align-items: flex-start;
+  gap: var(--gap-size);
   padding: var(--gap-size);
   .left {
     position: sticky;
     top: calc(var(--navbar-height) + var(--gap-size));
     flex-shrink: 0;
+    width: 300px;
     height: calc(100vh - var(--navbar-height) - 2 * var(--gap-size));
     margin-right: var(--gap-size);
+    padding: 12px;
     border-radius: 4px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
-    .inner {
-      width: 300px;
-      padding: 12px;
-    }
   }
   .main {
     flex: 1;
-    min-width: 260px;
+    max-width: 900px;
     transition: $transition;
-    .tag-filter-wrapper + .knowledge-list {
-      margin-top: var(--gap-size);
-    }
   }
-}
-
-.enter-in-left-enter-active,
-.enter-in-left-leave-active {
-  transition: $transition;
-}
-
-.enter-in-left-enter-from,
-.enter-in-left-leave-to {
-  opacity: 0;
-  width: 0 !important;
-  margin-right: 0 !important;
 }
 </style>

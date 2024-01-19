@@ -2,6 +2,7 @@
 import { computed, ref, nextTick } from 'vue';
 import { CaretBottom } from '@element-plus/icons-vue';
 import { KnowledgeTag } from '@/types/index';
+import TagItem from './TagItem.vue';
 
 const maxHeight = ref(142);
 const wrapperHeight = ref(maxHeight.value);
@@ -14,7 +15,8 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits<{(e: 'change', val: number): void;
+const emits = defineEmits<{
+  (e: 'change', val: number): void;
   (e: 'update:modelValue', val: number): void;
 }>();
 
@@ -69,25 +71,14 @@ getTagList();
       <div class="tag filter-item">
         <div class="label">标签过滤:</div>
         <div class="tag-group edit-area flex">
-          <div
-            role="button"
-            tabindex="0"
-            :class="[
-              'tag-item',
-              'flex-vertical-center',
-              'is-plain',
-              'is-transparent',
-              `color-group-${index % 12 + 1}`,
-              { 'is-active': currentTag === item.id }
-            ]"
+          <TagItem
             v-for="(item, index) in tagList"
             :key="item.id"
+            :name="item.name"
+            :total="item.total"
+            :class="[`color-group-${index % 12 + 1}`, { 'is-active': currentTag === item.id }]"
             @click="currentTagChange(item.id)"
-            @keydown="currentTagChange(item.id)"
-          >
-            <span class="tag-name ellipsis">{{ item.name }}</span>
-            <span>({{ item.total > 99999 ? '99999+' : item.total }})</span>
-          </div>
+          />
         </div>
       </div>
     </div>
@@ -104,6 +95,7 @@ getTagList();
 .filter-wrapper {
   position: relative;
   max-height: calc(1px * v-bind(maxHeight));
+  border-radius: 4px;
   overflow: hidden;
   font-size: 14px;
   transition: all .3s;
@@ -116,6 +108,10 @@ getTagList();
     }
     .edit-area {
       padding-left: 20px;
+    }
+    .tag-group {
+      flex-wrap: wrap;
+      gap: 12px;
     }
   }
   .filter-item + .filter-item {
@@ -133,25 +129,6 @@ getTagList();
     cursor: pointer;
     :deep(.el-icon) {
       margin: -3px 2px 0 0;
-    }
-  }
-}
-.tag-group {
-  flex-wrap: wrap;
-  gap: 12px;
-  .tag-item {
-    min-width: 30px;
-    height: 28px;
-    padding: 0 8px;
-    line-height: 28px;
-    text-align: center;
-    border-radius: 4px;
-    border: 1px solid;
-    transition: all .3s;
-    cursor: pointer;
-    .tag-name {
-      display: inline-block;
-      max-width: 120px;
     }
   }
 }
