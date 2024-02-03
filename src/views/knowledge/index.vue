@@ -28,9 +28,7 @@ toggleShowLeft();
 
 <template>
   <div class="knowledge-wrapper flex-center">
-    <el-scrollbar class="left" v-if="leftVisible">
-      <DirectoryTree />
-    </el-scrollbar>
+    <DirectoryTree class="directory-tree" v-if="leftVisible" />
     <div class="main">
       <router-view></router-view>
     </div>
@@ -44,16 +42,12 @@ $transition: all 3s ease;
   align-items: flex-start;
   gap: var(--gap-size);
   padding: var(--gap-size);
-  .left {
+  .directory-tree {
     position: sticky;
     top: calc(var(--navbar-height) + var(--gap-size));
     flex-shrink: 0;
     width: 300px;
     height: calc(100vh - var(--navbar-height) - 2 * var(--gap-size));
-    margin-right: var(--gap-size);
-    padding: 12px;
-    border-radius: 4px;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
   }
   .main {
     flex: 1;

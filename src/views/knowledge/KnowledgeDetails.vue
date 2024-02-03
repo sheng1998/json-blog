@@ -7,6 +7,4 @@ const router = useRouter();
 console.log(route.params, router);
 </script>
 
-<template>
-  详情
-</template>
+<template>详情</template>

@@ -12,11 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <div
-    role="button"
-    tabindex="0"
-    class="tag-item is-plain is-transparent flex-vertical-center"
-  >
+  <div role="button" tabindex="0" class="tag-item is-plain is-transparent flex-vertical-center">
     <span class="tag-name ellipsis">{{ name }}</span>
     <span>({{ total > 99999 ? '99999+' : total }})</span>
   </div>
@@ -31,7 +27,7 @@ defineProps({
   text-align: center;
   border-radius: 4px;
   border: 1px solid;
-  transition: all .3s;
+  transition: all 0.3s;
   cursor: pointer;
   .tag-name {
     display: inline-block;

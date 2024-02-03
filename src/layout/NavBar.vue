@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
-
-const emits = defineEmits<{(e: 'search', keyword: string): void;
-}>();
+const router = useRouter();
 
 const keyword = ref('');
 
@@ -15,7 +13,18 @@ const initKeyword = () => {
 };
 
 const search = () => {
-  emits('search', keyword.value.trim());
+  // 疑似 BUG (只有在这里深拷贝才行，否则 replace 无法正常清空某一 query)
+  const query = JSON.parse(JSON.stringify(route.query));
+  if (keyword.value) {
+    if (!route.meta.knowledge) {
+      router.push({ name: 'knowledge', query: { keyword: keyword.value } });
+    } else {
+      router.replace({ query: { ...query, keyword: keyword.value } });
+    }
+  } else {
+    Reflect.deleteProperty(query, 'keyword');
+    router.replace({ query: { ...query } });
+  }
 };
 
 initKeyword();
@@ -50,8 +59,8 @@ initKeyword();
   height: var(--navbar-height);
   width: 100%;
   padding: 2px 12px;
-  background-image: linear-gradient(to right, #66abec,#77b1f0, #88bdf1, #9bcaf4, #b4d5f4);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+  background-image: linear-gradient(to right, #66abec, #77b1f0, #88bdf1, #9bcaf4, #b4d5f4);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   z-index: 1;
   .left {
     gap: 5px;

@@ -76,7 +76,7 @@ getTagList();
             :key="item.id"
             :name="item.name"
             :total="item.total"
-            :class="[`color-group-${index % 12 + 1}`, { 'is-active': currentTag === item.id }]"
+            :class="[`color-group-${(index % 12) + 1}`, { 'is-active': currentTag === item.id }]"
             @click="currentTagChange(item.id)"
           />
         </div>
@@ -98,7 +98,7 @@ getTagList();
   border-radius: 4px;
   overflow: hidden;
   font-size: 14px;
-  transition: all .3s;
+  transition: all 0.3s;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
   .filter-item {
     .label {

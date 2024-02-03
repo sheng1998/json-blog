@@ -1,16 +1,27 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
-/* eslint-disable import/extensions, import/no-unresolved */
 const AutoImport = require('unplugin-auto-import/webpack');
 const Components = require('unplugin-vue-components/webpack');
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers');
-/* eslint-enable */
 
 module.exports = {
-  publicPath: '',
+  publicPath: '/json-blog',
   assetsDir: 'assets',
   devServer: {
     open: true,
     port: 2024,
+    proxy: {
+      '/api/v1': {
+        ws: true,
+        changeOrigin: true,
+        target: 'http://127.0.0.1:3003/',
+        pathRewrite: { '^/api/v1': '' },
+      },
+    },
+    client: {
+      // 不显示错误全屏警告
+      overlay: false,
+    },
   },
   configureWebpack: {
     plugins: [
@@ -23,11 +34,7 @@ module.exports = {
     ],
   },
   chainWebpack: (config) => {
-    config
-      .resolve
-      .alias
-      .store
-      .set('$style', path.resolve(__dirname, 'src/assets/css/'));
+    config.resolve.alias.store.set('$style', path.resolve(__dirname, 'src/assets/css/'));
     config.plugin('define').tap((definitions) => {
       Object.assign(definitions[0], {
         // __VUE_OPTIONS_API__: true,

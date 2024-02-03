@@ -46,31 +46,33 @@ toggleShowLeft();
       v-for="item in 20"
       :key="item"
     >
-      <div class="title">哈哈哈哈哈</div>
       <div class="flex">
-        <div class="description">
-          hdjdhjhdjdhj哼哼哼哼哼哼
+        <div class="container flex">
+          <div class="title clamp-2">哈哈哈哈</div>
+          <div class="description">hdjdhjhdjdhj哼哼哼哼哼哼</div>
+          <div class="mate flex-vertical-center">
+            <div class="nickname mate-item">小庄</div>
+            <div class="time mate-item">2024-01-19 21:29</div>
+            <div class="comments mate-item flex-vertical-center">
+              <span class="iconfont icon-comment"></span>
+              <span>999+</span>
+            </div>
+            <div class="like mate-item flex-vertical-center">
+              <span class="iconfont icon-like"></span>
+              <span>998</span>
+            </div>
+            <div class="read mate-item flex-vertical-center">
+              <span class="iconfont icon-read"></span>
+              <span>9999+</span>
+            </div>
+          </div>
         </div>
         <img
           v-if="Math.random() > 0.5"
           class="picture"
-          src="https://th.bing.com/th/id/OIP.2rQ25qnSMQHXGcHz3Rp2pAHaEo?w=294&h=183&c=7&r=0&o=5&pid=1.7" alt="">
-      </div>
-      <div class="mate flex-vertical-center">
-        <div class="nickname mate-item">小庄</div>
-        <div class="time mate-item">2024-01-19 21:29</div>
-        <div class="comments mate-item flex-vertical-center">
-          <span class="iconfont icon-comment"></span>
-          <span>999+</span>
-        </div>
-        <div class="like mate-item flex-vertical-center">
-          <span class="iconfont icon-like"></span>
-          <span>998</span>
-        </div>
-        <div class="read mate-item flex-vertical-center">
-          <span class="iconfont icon-read"></span>
-          <span>9999+</span>
-        </div>
+          src="https://th.bing.com/th/id/OIP.2rQ25qnSMQHXGcHz3Rp2pAHaEo?w=294&h=183&c=7&r=0&o=5&pid=1.7"
+          alt=""
+        />
       </div>
     </router-link>
   </div>
@@ -94,6 +96,18 @@ toggleShowLeft();
     background-color: #f8f8fa;
     text-decoration: none;
     cursor: pointer;
+    .container {
+      flex: 1;
+      flex-direction: column;
+    }
+    .title,
+    .description {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
     .title {
       margin-bottom: 12px;
       line-height: 22px;
@@ -101,19 +115,20 @@ toggleShowLeft();
       font-weight: 700;
     }
     .description {
-      flex: 1;
+      margin-bottom: 12px;
       font-size: 14px;
       color: #999;
+      -webkit-line-clamp: 4;
     }
     .picture {
       flex-shrink: 0;
       margin-left: 24px;
       border-radius: 4px;
-      max-width: 120px;
-      max-height: 80px;
+      max-width: 180px;
+      max-height: 120px;
     }
     .mate {
-      margin-top: 12px;
+      margin-top: auto;
       line-height: 20px;
       color: #999;
       font-size: 12px;
